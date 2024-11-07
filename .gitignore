@@ -1,0 +1,6 @@
+# folders
+videos/
+__pycache__/
+
+# files
+flowfield_complete_sim.py
