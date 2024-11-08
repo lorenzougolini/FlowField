@@ -10,7 +10,7 @@ class Particle():
         self.vel = vel
         self.acc = acc
         
-        self.color = (random.randrange(0,255),random.randrange(0,255),random.randrange(0,255),50)
+        self.color = (random.randrange(50, 256), random.randrange(0, 50), random.randrange(0, 50), 50)
         self.head_color = tuple(self.color[:-1])
 
     def update(self):

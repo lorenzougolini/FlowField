@@ -8,7 +8,9 @@ from Particle import Particle
 import pygame
 
 class Simulation():
-    def __init__(self, num_particles: int) -> None:
+    def __init__(self, draw_field: bool, draw_particles: bool, num_particles: int) -> None:
+        self.draw_field = draw_field
+        self.draw_particles = draw_particles
         self.num_particles = num_particles
         
         self.num_rows = int(HEIGHT/SCALE)
@@ -30,9 +32,10 @@ class Simulation():
             ]
     
     def update(self):
-        self.flowfield.zdim += 0.05
+        self.flowfield.zdim += 0.01
         self.flowfield.createFlowField()
 
-        for p in self.particles:
-            p.update()
-            p.follow(self.flowfield.angleGrid, blockSize=self.blockSize, magnitude=0.2)
+        if self.draw_particles:
+            for p in self.particles:
+                p.update()
+                p.follow(self.flowfield.angleGrid, blockSize=self.blockSize, magnitude=0.2)
